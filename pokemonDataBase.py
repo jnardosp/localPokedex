@@ -1,29 +1,49 @@
 import pickle
 from requests_html import HTMLSession
+import time
 
-POKEDEX_URL= "https://www.pokexperto.net/index2.php?seccion=nds/nationaldex/movimientos_nivel&pk="
+POKEDEX_SUMMARY_SESSION = HTMLSession().get("https://www.pokexperto.net/index2.php?seccion=nds/nationaldex/buscar")
 
 class Pokemon:
-    def __init__(self, name, type, img, url):
-        self.name = name
-        self.type = type
-        self.img = img
-        self.url = url
+    """
+    Un pokemon tiene una propiedad número, un nombre y una propiedad URL. Mas dos funciones para inicializarlas.
+    """
+    def __init__(self, number):
+        self.__number = None
+        self.__name = None
+        self.__url = None
+        self.setNumber(number)
+        self.setURL(number)
+        self.setName()
 
-# Accedemos y guardamos los datos de un pokemon determinado por el número en pokedex.
-def getPokemon(number):
-        url = "{}{}" .format(POKEDEX_URL, number)
+    def setNumber(self, number):
+        self.__number = number
+    def getNumber(self):
+        return self.__number
+    
+    def setName(self):
+        # Buscar en la lista de toda la pokedex, el nombre de pokemon que buscamos
+        self.__name = POKEDEX_SUMMARY_SESSION.html.find("tr.bazul")[self.getNumber()].find("a.nav5c", first=True).text
+    def getName(self):
+        return self.__name
+    
+    def setURL(self, number):
+        self.__url = "https://www.pokexperto.net/index2.php?seccion=nds/nationaldex/movimientos_nivel&pk=" + str(number)
+    def getURL(self):
+        return self.__url
+
+        return name
+    def getImg(self):
+        """
+        Esta función consulta la dirección de la ubicación de la imagen del pokemon.
+        """
         session = HTMLSession()
-        pokedexPage = session.get(url)
-        newPokemon = Pokemon(pokedexPage.html.find("span", first=True).find(".mini", first=True).text, [],
-                             pokedexPage.html.find(".pkmain", first=True).find(".center.bordedcho", first=True).find("img", first=True).attrs["src"], url)
+        pokedexPage = session.get(self.getURL())
+        imgPokemon = pokedexPage.html.find(".pkmain", first=True).find(".center.bordedcho", first=True).find("img", first=True).attrs["src"]
 
-        # En nuestra wiki los tipos de pokemon son imágenes jajaja
-        for img in pokedexPage.html.find(".pkmain", first=True).find(".bordeambos", first=True).find("img"):
-            newPokemon.type.append(img.attrs["alt"])
-        
-        return newPokemon
+        return imgPokemon
 
+# Esta funcion mete en un array todos los pkmn y los serializa.
 def getAllPokemon():
     try:
         # Buscamos el .pkl de pokemones
@@ -31,19 +51,20 @@ def getAllPokemon():
             allPokemon = pickle.load(pokeDB)
     except FileNotFoundError:
         # De no existir el .pkl de pokemones lo creamos
+        start1 = time.time()
         allPokemon = []
         print("Creando .pkl")
         for number in range(151):
-            allPokemon.append(getPokemon(number + 1))
+            start = time.time()
+            allPokemon.append(Pokemon(number))
+            end = time.time()
+            print("getting a pokemon taked :",(end-start) * 10**3, "ms")
 
         with open("pokeDB.pkl", "wb") as pokeDB:
             pickle.dump(allPokemon, pokeDB)
+        end1 = time.time()
+        print("getting the pokemon taked :",(end1-start1) * 10**3, "ms")
 
     return allPokemon
 
-def main():
-    getAllPokemon()
-    print("x")
-
-if __name__ == "__main__":
-    main()
+getAllPokemon()
