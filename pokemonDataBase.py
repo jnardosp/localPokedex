@@ -37,9 +37,8 @@ class Pokemon:
         """
         Esta función consulta la dirección de la ubicación de la imagen del pokemon.
         """
-        session = HTMLSession()
-        pokedexPage = session.get(self.getURL())
-        imgPokemon = pokedexPage.html.find(".pkmain", first=True).find(".center.bordedcho", first=True).find("img", first=True).attrs["src"]
+        imgPokemon = POKEDEX_SUMMARY_SESSION.html.find("tr.bazul")[self.getNumber()].find("td.bordetodos")[1].find("img", first=True).attrs["src"]
+        print(imgPokemon)
 
         return imgPokemon
 
@@ -66,5 +65,3 @@ def getAllPokemon():
         print("getting the pokemon taked :",(end1-start1) * 10**3, "ms")
 
     return allPokemon
-
-getAllPokemon()
