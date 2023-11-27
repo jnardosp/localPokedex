@@ -39,6 +39,11 @@ class ShowPkm(QtWidgets.QMainWindow):
 		# sets the respective label on the GUI.
 		self.ui.img.setPixmap(QtGui.QPixmap(pkmImg))
 
+		type1URL = "https://www.pokexperto.net/3ds/sprites/tipos/" + pokemon.getTypes()[0] + ".png"
+		type1Img = QImage()
+		type1Img.loadFromData(requests.get(type1URL).content)
+		type1Img = type1Img.scaled(50, 50, QtCore.Qt.KeepAspectRatioByExpanding, QtCore.Qt.FastTransformation)
+		self.ui.type.setPixmap(QtGui.QPixmap(type1Img))
 
 
 app = QtWidgets.QApplication([])

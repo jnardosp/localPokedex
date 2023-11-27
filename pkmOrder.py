@@ -1,4 +1,6 @@
 # Informal interface pkmOrder
 class pkmOrder:
-    def ordernar():
+    def ascendentOrder():
+        pass
+    def descendentOrder():
         pass

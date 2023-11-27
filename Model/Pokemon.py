@@ -29,8 +29,7 @@ class Pokemon:
         self.__url = "https://www.pokexperto.net/index2.php?seccion=nds/nationaldex/movimientos_nivel&pk=" + str(number)
     def getURL(self):
         return self.__url
-
-        return name
+    
     def getImg(self):
         """
         Esta función consulta la dirección de la ubicación de la imagen del pokemon.
@@ -39,3 +38,12 @@ class Pokemon:
         print(imgPokemon)
 
         return imgPokemon
+    
+    def getTypes(self):
+        typesOfPkm = []
+        images = POKEDEX_SUMMARY_SESSION.html.find("tr.bazul")[self.getNumber()].find("td.bordetodos")[2].find("img")
+        for img in images:
+            str = img.attrs["src"].replace("3ds/sprites/tipos/", "")
+            typesOfPkm.append(str.replace(".png", ""))
+        
+        return typesOfPkm

@@ -1,6 +1,6 @@
 import pkmOrder
 
-class aZOrder(pkmOrder):
+class numberOrder(pkmOrder):
     def ascendentOrder():
         pass
     def descendentOrder():
