@@ -1,6 +1,6 @@
 import pickle
 import time
-from Model.Pokemon import Pokemon
+from LocalPokedex.Model.Pokemon import Pokemon
 
 # Esta funcion mete en un array todos los pkmn y los serializa.
 def pkmDB():
@@ -19,9 +19,9 @@ def pkmDB():
             end = time.time()
             print("getting a pokemon taked :",(end-start) * 10**3, "ms")
 
+        end1 = time.time()
         with open("Model/pokeDB.pkl", "wb") as pokeDB:
             pickle.dump(allPokemon, pokeDB)
-        end1 = time.time()
         print("getting the pokemon taked :",(end1-start1) * 10**3, "ms")
 
     return allPokemon
