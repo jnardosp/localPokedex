@@ -5,10 +5,11 @@ import requests
 from View.PkmDisplay import Ui_PkmDisplay
 from Model.pkmDB import pkmDB
 
+
 import sys
 
 class ShowPkm(QtWidgets.QMainWindow):
-	def __init__(self):
+	def __init__(self, main):
 		super(ShowPkm, self).__init__()
 		self.ui = Ui_PkmDisplay()
 		self.ui.setupUi(self)
@@ -18,6 +19,7 @@ class ShowPkm(QtWidgets.QMainWindow):
 		# Triggers the DisplayPkm function.
 		self.ui.getPokemon.clicked.connect(self.displayPkm)
 		self.ui.pushButton.clicked.connect(self.goBack)
+		self.stack = main.getStack()
 
 	def displayPkm(self):
 		# Bring or download .pkl pkmn database
@@ -50,7 +52,7 @@ class ShowPkm(QtWidgets.QMainWindow):
 		typeImg = typeImg.scaled(50, 50, QtCore.Qt.KeepAspectRatioByExpanding, QtCore.Qt.FastTransformation)
 		qTLabel.setPixmap(QtGui.QPixmap(typeImg))
 
-	def goBack(self, stack):
+	def goBack(self):
 		self.stack.setCurrentIndex(self.stack.currentIndex() -1)
 
 

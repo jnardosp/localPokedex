@@ -5,6 +5,7 @@ from View.Comparator import Ui_Comparator
 from Model.pkmDB import pkmDB
 from Model.PkmStrenghts import Tipo
 
+
 traducciones = {
             "normal": "Normal",
             "fuego": "Fire",
@@ -31,17 +32,18 @@ class ShowComparator(QtWidgets.QMainWindow):
     ShowComparator es el controlador del comparador de pokemones. Buscamos traer dos pokemones particulares de la base
     de datos y compararlos en función de sus tipos, invocando el grafo de tipos construido en PKMStrenghts.
     """
-    def __init__(self, ):
+    def __init__(self, main):
         super(ShowComparator, self).__init__()
         self.ui = Ui_Comparator()
         self.ui.setupUi(self)
 
         self.ui.getPkms.clicked.connect(self.displayPkms)
-        # This overwrites the function above, thus the program is not bringing a pokemon.
         self.ui.getPkms.clicked.connect(self.showComparator)
         self.allPkm = pkmDB()
         self.myPkm = None
         self.rivalPkm = None
+        self.stack = main.getStack()
+        self.ui.pushButton.clicked.connect(self.goBack)
 
     def displayPkms(self):
 
@@ -106,6 +108,9 @@ class ShowComparator(QtWidgets.QMainWindow):
         else:
             print("Es una pelea balanceada.")
             self.ui.conclusion.setText("Es una pelea balanceada.")
+
+    def goBack(self):
+        self.stack.setCurrentIndex(self.stack.currentIndex() - 3)
 
 
 
