@@ -8,7 +8,7 @@ from LocalPokedex.Model.pkmDB import pkmDB
 import sys
 
 class ShowPkm(QtWidgets.QMainWindow):
-	def __init__(self, stack):
+	def __init__(self):
 		super(ShowPkm, self).__init__()
 		self.ui = Ui_PkmDisplay()
 		self.ui.setupUi(self)
@@ -18,7 +18,6 @@ class ShowPkm(QtWidgets.QMainWindow):
 		# Triggers the DisplayPkm function.
 		self.ui.getPokemon.clicked.connect(self.displayPkm)
 		self.ui.pushButton.clicked.connect(self.goBack)
-		self.stack = stack
 
 	def displayPkm(self):
 		# Bring or download .pkl pkmn database
