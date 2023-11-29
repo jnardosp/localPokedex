@@ -101,6 +101,9 @@ class Ui_Comparator(object):
         self.getPkms = QtWidgets.QPushButton(self.gridLayoutWidget)
         self.getPkms.setObjectName("getPkms")
         self.gridLayout.addWidget(self.getPkms, 3, 2, 1, 1)
+        self.pushButton = QtWidgets.QPushButton(self.gridLayoutWidget)
+        self.pushButton.setObjectName("pushButton")
+        self.gridLayout.addWidget(self.pushButton, 6, 2, 1, 1)
         Comparator.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(Comparator)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 32))
@@ -120,11 +123,12 @@ class Ui_Comparator(object):
         self.label_2.setText(_translate("Comparator", "El Pokemon rival es:"))
         self.myPkmName.setText(_translate("Comparator", "Name"))
         self.rivalPkmName.setText(_translate("Comparator", "Name"))
-        self.myType1.setText(_translate("Comparator", "Tipo 1"))
-        self.myType2.setText(_translate("Comparator", "Tipo 2"))
-        self.rivalType2.setText(_translate("Comparator", "Tipo 4"))
-        self.rivalType1.setText(_translate("Comparator", "Tipo 3"))
+        self.myType1.setText(_translate("Comparator", ""))
+        self.myType2.setText(_translate("Comparator", ""))
+        self.rivalType2.setText(_translate("Comparator", ""))
+        self.rivalType1.setText(_translate("Comparator", ""))
         self.getPkms.setText(_translate("Comparator", "Buscar"))
+        self.pushButton.setText(_translate("Comparator", "Volver"))
 
 
 if __name__ == "__main__":
