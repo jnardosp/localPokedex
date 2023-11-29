@@ -1,6 +1,6 @@
-import LocalPokedex.Controller.MainController as Mc
-import LocalPokedex.Controller.ShowPkmController as Sp
-import LocalPokedex.Controller.ComparatorController as Sc
+import Controller.MainController as Mc
+import Controller.ShowPkmController as Sp
+import Controller.ComparatorController as Sc
 
 if __name__ == "__main__":
     import sys

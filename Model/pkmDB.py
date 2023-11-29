@@ -1,6 +1,6 @@
 import pickle
 import time
-from LocalPokedex.Model.Pokemon import Pokemon
+from Model.Pokemon import Pokemon
 
 # Esta funcion mete en un array todos los pkmn y los serializa.
 def pkmDB():

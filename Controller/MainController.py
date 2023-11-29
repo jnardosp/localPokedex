@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets
-from LocalPokedex.View.MainMenuView import Ui_MainWindow
+from View.MainMenuView import Ui_MainWindow
 
 
 class ShowMain(QtWidgets.QMainWindow):

@@ -2,8 +2,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QImage
 import requests
 
-from LocalPokedex.View.PkmDisplay import Ui_PkmDisplay
-from LocalPokedex.Model.pkmDB import pkmDB
+from View.PkmDisplay import Ui_PkmDisplay
+from Model.pkmDB import pkmDB
 
 import sys
 
@@ -40,11 +40,15 @@ class ShowPkm(QtWidgets.QMainWindow):
 		# sets the respective label on the GUI.
 		self.ui.img.setPixmap(QtGui.QPixmap(pkmImg))
 
-		type1URL = "https://www.pokexperto.net/3ds/sprites/tipos/" + pokemon.getTypes()[0] + ".png"
-		type1Img = QImage()
-		type1Img.loadFromData(requests.get(type1URL).content)
-		type1Img = type1Img.scaled(50, 50, QtCore.Qt.KeepAspectRatioByExpanding, QtCore.Qt.FastTransformation)
-		self.ui.Type1.setPixmap(QtGui.QPixmap(type1Img))
+		self.mountType(pokemon.getTypes()[0], self.ui.Type1)
+		self.mountType(pokemon.getTypes()[1], self.ui.Type2)
+
+	def mountType(self, tipo, qTLabel):
+		typeURL = "https://www.pokexperto.net/3ds/sprites/tipos/" + tipo + ".png"
+		typeImg = QtGui.QImage()
+		typeImg.loadFromData(requests.get(typeURL).content)
+		typeImg = typeImg.scaled(50, 50, QtCore.Qt.KeepAspectRatioByExpanding, QtCore.Qt.FastTransformation)
+		qTLabel.setPixmap(QtGui.QPixmap(typeImg))
 
 	def goBack(self, stack):
 		self.stack.setCurrentIndex(self.stack.currentIndex() -1)
