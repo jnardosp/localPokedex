@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>786</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -76,46 +76,98 @@
      <item row="5" column="1">
       <layout class="QGridLayout" name="gridLayout_3">
        <item row="2" column="0">
-        <widget class="QLabel" name="myPkmTypes">
-         <property name="text">
-          <string>Types</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QLabel" name="rivalPkmtypes">
-         <property name="text">
-          <string>Types</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QLabel" name="rivalPkmName">
-         <property name="text">
-          <string>Name</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
         <widget class="QLabel" name="myPkmName">
          <property name="text">
           <string>Name</string>
          </property>
-        </widget>
-       </item>
-       <item row="0" column="0">
-        <widget class="QLabel" name="myPkmSprite">
-         <property name="text">
-          <string>Img</string>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
        <item row="0" column="1">
         <widget class="QLabel" name="rivalPkmSprite">
          <property name="text">
-          <string>Img</string>
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap>../View/images/unknown.png</pixmap>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLabel" name="rivalPkmName">
+         <property name="text">
+          <string>Name</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="myPkmSprite">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap>../View/images/unknown.png</pixmap>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <layout class="QGridLayout" name="gridLayout_5">
+         <item row="0" column="0">
+          <widget class="QLabel" name="myType1">
+           <property name="text">
+            <string>Tipo 1</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLabel" name="myType2">
+           <property name="text">
+            <string>Tipo 2</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="3" column="1">
+        <layout class="QGridLayout" name="gridLayout_6">
+         <item row="0" column="2">
+          <widget class="QLabel" name="rivalType2">
+           <property name="text">
+            <string>Tipo 4</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLabel" name="rivalType1">
+           <property name="text">
+            <string>Tipo 3</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
       </layout>
      </item>

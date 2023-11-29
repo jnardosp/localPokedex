@@ -9,7 +9,7 @@ class ShowMain(QtWidgets.QMainWindow):
         self.ui.setupUi(self)
         self.ui.findByNumber.clicked.connect(self.goToShowPkm)
         # self.ui.listPokemon.clicked.connect(self.goToListPkm)
-        # self.ui.comparePokemon.clicked.connect(self.goToCompare)
+        self.ui.comparePokemon.clicked.connect(self.goToCompare)
         self.stack = QtWidgets.QStackedWidget()
         self.stack.setFixedWidth(800)
         self.stack.setFixedHeight(600)
@@ -27,7 +27,7 @@ class ShowMain(QtWidgets.QMainWindow):
         self.stack.setCurrentIndex(self.stack.currentIndex() + 2)
 
     def goToCompare(self):
-        self.stack.setCurrentIndex(self.stack.currentIndex() + 3)
+        self.stack.setCurrentIndex(self.stack.currentIndex() + 2)
 
 
 

@@ -45,6 +45,5 @@ class Pokemon:
         for img in images:
             str = img.attrs["src"].replace("3ds/sprites/tipos/", "")
             typesOfPkm.append(str.replace(".png", ""))
-        return typesOfPkm
-        
+        print("tipo de pokemon inicializado.")
         return typesOfPkm

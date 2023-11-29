@@ -7,13 +7,15 @@ class Tipo:
         self._propio = None
         self._fuerteContra = []
         self.setPropio(propio)
+        self.setFuerteContra()
+
 
     def setPropio(self, nombre):
         # print("creando Tipo")
         # De manera provisional, estoy obteniendo la información de un tipo de pokemon particular.
         consulta = HTMLSession()
         tablaDeTipos = consulta.get(self._PKM_TYPE_CHART_URL)
-        tipo = tablaDeTipos.html.find("table")[1].find("a", containing=nombre)[1].text
+        tipo = tablaDeTipos.html.find("table")[1].find("a", containing= nombre)[1].text
         self._propio = tipo
         consulta.close()
         """
@@ -58,19 +60,6 @@ class Tipo:
             fuerteContra.append(tipos[index].text)
         print("lista de tipos creada.")
         return fuerteContra
-    """
-    def printfuerteContra(self):
-        cad = ""
-        for tipo in self._fuerteContra:
-            cad = cad + " " + tipo
-
-        print(str)
-    """
-
-tipo = Tipo("Psychic")
-tipo.setFuerteContra()
-print("Los pokemones de tipo " + tipo.getPropio() + " son fuertes contra los pokemones del tipo " + str(tipo.getFuerteContra()))
-# tipo.printfuerteContra()
 
 
 
