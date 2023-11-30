@@ -17,10 +17,12 @@ class ShowHeap(QtWidgets.QMainWindow):
 
         self.ui.tableWidget.setColumnCount(2)
         self.ui.tableWidget.setRowCount(len(self.pkArray))
-        self.ui.tableWidget.setHorizontalHeaderLabels(["", "Nombre"])
+        self.ui.tableWidget.setHorizontalHeaderLabels(["Numero", "Nombre"])
         self.ui.sortMax.clicked.connect(self.displayMax)
         self.ui.sortMin.clicked.connect(self.displayMin)
         self.ui.pushButton.clicked.connect(self.goBack)
+        self.ui.sortAZ.hide()
+        self.ui.sortZA.hide()
 
     def displayMin(self):
         print("organizando tabla")
@@ -28,6 +30,7 @@ class ShowHeap(QtWidgets.QMainWindow):
             # print("Añadiendo pokemon a la tabla")
             num = pokemon.getNumber()
             name = QTableWidgetItem(pokemon.getName())
+            self.ui.tableWidget.setItem(num, 0, QTableWidgetItem(str(pokemon.getNumber() + 1)))
             self.ui.tableWidget.setItem(num, 1, name)
         print("Pokemones añadidos")
         self.ui.tableWidget.show()
@@ -35,10 +38,10 @@ class ShowHeap(QtWidgets.QMainWindow):
     def displayMax(self):
         print("organizando tabla")
         for pokemon in self.myPkmHeap:
-            # print("Añadiendo pokemon a la tabla")
-            num = pokemon.getNumber()
-            name = QTableWidgetItem(pokemon.getName())
-            self.ui.tableWidget.setItem(num, 1, name)
+            inx = self.myPkmHeap.index(pokemon)
+            self.ui.tableWidget.insertRow(inx)
+            self.ui.tableWidget.setItem(inx, 0, QTableWidgetItem(str(pokemon.getNumber()+1)))
+            self.ui.tableWidget.setItem(inx, 1, QTableWidgetItem(pokemon.getName()))
         print("Pokemones añadidos")
         self.ui.tableWidget.show()
 
