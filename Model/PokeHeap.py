@@ -60,7 +60,7 @@ class PokeHeap:
 
     def getMaxArray(self):
         maxPkmArray = []
-        for i in range(151):
+        for i in range(150):
             maxPkmArray.append(self.deleteMax())
             print(maxPkmArray[i].getName())
         return maxPkmArray
